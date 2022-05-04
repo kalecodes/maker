@@ -24,9 +24,9 @@ const typeDefs = gql`
         price: Float
         sold: Boolean
         createdAt: String
-        likedBy: [User]
+        likes: [User]
         comments: [Comment]
-        savedBy: [User]
+        saves: [User]
     }
 
     type Comment {

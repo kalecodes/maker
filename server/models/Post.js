@@ -39,14 +39,14 @@ const postSchema = new Schema(
             type: Date,
             default: Date.now
         },
-        likedBy: [
+        likes: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'User'
             }
         ],
         comments: [commentSchema],
-        savedBy: [
+        saves: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'User'
