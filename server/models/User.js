@@ -44,7 +44,8 @@ const userSchema = new Schema(
         ],
         isArtist: {
             type: Boolean,
-            default: false
+            default: false,
+            required: true
         },
         posts: [
             {

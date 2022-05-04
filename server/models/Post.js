@@ -5,7 +5,9 @@ const commentSchema = require('./Comment');
 const postSchema = new Schema(
     {
         image: {
-
+            // implement image upload and storage
+            type: String,
+            required: true
         },
         title: {
             type: String,
@@ -17,11 +19,13 @@ const postSchema = new Schema(
         },
         postedBy: {
             type: Schema.Types.ObjectId, 
-            ref: 'User'
+            ref: 'User',
+            required: true
         },
         forSale: {
             type: Boolean, 
-            default: false
+            default: false,
+            required: true
         },
         price: {
             type: Number,
