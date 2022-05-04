@@ -24,6 +24,17 @@ const userSchema = new Schema(
         image: {
 
         },
+        isArtist: {
+            type: Boolean,
+            default: false,
+            required: true
+        },
+        posts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Post'
+            }
+        ],
         favorites: [
             {
                 type: Schema.Types.ObjectId,
@@ -41,18 +52,7 @@ const userSchema = new Schema(
                 type: Schema.Types.ObjectId, 
                 ref: 'Post'
             }
-        ],
-        isArtist: {
-            type: Boolean,
-            default: false,
-            required: true
-        },
-        posts: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Post'
-            }
-        ],
+        ]
     }
 );
 

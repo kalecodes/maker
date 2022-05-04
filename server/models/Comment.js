@@ -7,7 +7,7 @@ const commentSchema = new Schema(
             required: true,
             maxlength: 280
         },
-        commentedBy: {
+        username: {
             type: Schema.Types.ObjectId,
             ref: 'User'
         },

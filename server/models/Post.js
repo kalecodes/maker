@@ -17,7 +17,7 @@ const postSchema = new Schema(
             type: String, 
             maxlength: 280
         },
-        postedBy: {
+        username: {
             type: Schema.Types.ObjectId, 
             ref: 'User',
             required: true
