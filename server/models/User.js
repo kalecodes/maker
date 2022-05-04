@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const { childSchemas } = require('./Comment');
 
 const userSchema = new Schema(
     {
@@ -26,9 +27,31 @@ const userSchema = new Schema(
         favorites: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Artist'
+                ref: 'User'
             }
-        ]
+        ],
+        likes: [
+            {
+                type: Schema.Types.ObjectId, 
+                ref: 'Post'
+            }
+        ],
+        saves: [
+            {
+                type: Schema.Types.ObjectId, 
+                ref: 'Post'
+            }
+        ],
+        isArtist: {
+            type: Boolean,
+            default: false
+        },
+        posts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Post'
+            }
+        ],
     }
 );
 

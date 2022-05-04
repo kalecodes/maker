@@ -7,19 +7,13 @@ const commentSchema = new Schema(
             required: true,
             maxlength: 280
         },
-        username: {
-            type: String,
-            required: true
+        commentedBy: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
         },
         createdAt: {
             type: Date,
-            default: Date.now,
-            get: timestamp => dateFormat(timestamp)
-        }
-    },
-    {
-        toJSON: {
-            getters: true
+            default: Date.now
         }
     }
 );
