@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const { childSchemas } = require('./Comment');
 
 const userSchema = new Schema(
     {

@@ -6,8 +6,7 @@ const postSchema = new Schema(
     {
         image: {
             // implement image upload and storage
-            type: String,
-            required: true
+            type: String
         },
         title: {
             type: String,
@@ -18,8 +17,7 @@ const postSchema = new Schema(
             maxlength: 280
         },
         username: {
-            type: Schema.Types.ObjectId, 
-            ref: 'User',
+            type: String,
             required: true
         },
         forSale: {
