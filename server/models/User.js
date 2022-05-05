@@ -21,7 +21,7 @@ const userSchema = new Schema(
             minlength: 8
         },
         image: {
-
+            type: String
         },
         isArtist: {
             type: Boolean,

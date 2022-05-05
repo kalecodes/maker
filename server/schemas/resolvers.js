@@ -76,9 +76,9 @@ const resolvers = {
         addLike: async (parent, { postId }, context) => {
             if (context.user) {
                 const updatedPost = await Post.findOneAndUpdate(
-                    { _id: postId },
-                    { $push: { likes: { username: context.user.username } } },
-                    { new: true, runValidators: true }
+                    { _id: context.user._id },
+                    { $addToSet: { likes: postId  } },
+                    { new: true }
                 )
 
                 return updatedPost;
@@ -101,13 +101,13 @@ const resolvers = {
         },
         addSave: async (parent, { postId }, context) => {
             if (context.user) {
-                const updatedPost = await Post.findOneAndUpdate(
-                    { _id: postId },
-                    { $push: { saves: { username: context.user.username } } },
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $addToSet: { saves: postId } },
                     { new: true }
-                )
+                );
 
-                return updatedPost;
+                return updatedUser;
             }
 
             throw new AuthenticationError('You must be logged in!')

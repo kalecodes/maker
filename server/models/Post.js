@@ -4,13 +4,13 @@ const commentSchema = require('./Comment');
 
 const postSchema = new Schema(
     {
-        image: {
-            // implement image upload and storage
-            type: String
-        },
         title: {
             type: String,
             maxlength: 80
+        },
+        image: {
+            type: String,
+            required: true
         },
         description: {
             type: String, 
@@ -22,12 +22,12 @@ const postSchema = new Schema(
         },
         forSale: {
             type: Boolean, 
-            default: false,
-            required: true
+            default: false
         },
         price: {
             type: Number,
-            match: [/^[0-9]*\.[0-9]{2}$/, 'Must include 2 decimal places!']
+            match: [/^[0-9]*\.[0-9]{2}$/, 'Must include 2 decimal places!'],
+            default: 0
         },
         sold: {
             type: Boolean, 
