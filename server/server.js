@@ -4,11 +4,18 @@ const path = require('path');
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
-
+// aws
+const aws = require('aws-sdk');
+aws.config.region = 'us-east-1';
+const S3_BUCKET = process.env.S3_BUCKET
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+// aws
+app.engine('html', require('ejs').renderFile);
+
+// start apollo server
 const startServer = async () => {
     const server = new ApolloServer({
         typeDefs,
@@ -25,6 +32,35 @@ const startServer = async () => {
 
 startServer();
 
+// aws code ------------------------- //
+app.get('sign-s3', (req, res) => {
+    const s3 = new aws.S3();
+    const fileName = req.query['file-name'];
+    const fileType = req.query['file-type'];
+    const s3Params = {
+        Bucket: "my-maker-bucket",
+        Key: fileName,
+        Expires: 60,
+        ContentType: fileType,
+        ACL: 'public-read'
+    };
+
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+        if (err){
+            console.log(err);
+            return res.end();
+        }
+        const returnData = {
+            signedRequest: data,
+            url: `https://my-maker-bucket.s3.amazonaws.com/${fileName}`
+        }
+        res.write(JSON.stringify(returnData));
+        res.end()
+    });
+});
+
+
+// ---------------------------------- //
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
