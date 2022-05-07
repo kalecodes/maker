@@ -2,9 +2,9 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer>
-            <div>
-                &copy;{new Date.getFullYear()} by kalecodes
+        <footer className="w-100 mt-auto bg-secondary p-4">
+            <div className="container">
+                &copy;{new Date().getFullYear()} {` `}by kalecodes
             </div>
         </footer>
     );

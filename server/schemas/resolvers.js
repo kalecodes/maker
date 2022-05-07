@@ -112,7 +112,7 @@ const resolvers = {
 
             throw new AuthenticationError('You must be logged in!')
         },
-        addFavorite: async (parent, { favId }, context) => {
+        addFav: async (parent, { favId }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },

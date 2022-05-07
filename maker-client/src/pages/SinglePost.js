@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 
 
-import Auth from '../utils/auth';
+// import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_POST } from '../utils/queries';
 

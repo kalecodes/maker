@@ -61,20 +61,22 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_USERS = gql`
-    users {
-        _id
-        username
-        image
-        isArtist
-        posts {
+    {
+        users {
             _id
-            title
+            username
             image
-            description
-            forSale
-            price
-            sold
-            createdAt
+            isArtist
+            posts {
+                _id
+                title
+                image
+                description
+                forSale
+                price
+                sold
+                createdAt
+            }
         }
     }
 `;
