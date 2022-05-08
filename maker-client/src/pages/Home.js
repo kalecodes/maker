@@ -4,7 +4,7 @@ import { Rerousel } from 'rerousel';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS, QUERY_ME } from '../utils/queries';
-import { Image } from 'semantic-ui-react';
+import { Image, Segment } from 'semantic-ui-react';
 
 const Home = () => {
     const { loading, data} = useQuery(QUERY_POSTS);
@@ -19,7 +19,7 @@ const Home = () => {
                 <div className="mb-5">
                     <h2>New</h2>
                     {loading ? (
-                        <div>Loading...</div>
+                        <Segment loading/>
                     ) : (
                         <Rerousel responsive='true'>
                             {posts && 

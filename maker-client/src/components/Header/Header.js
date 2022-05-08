@@ -15,21 +15,22 @@ const Header = () => {
     return (
         <header className="bg-secondary mb-4 py-2 flex-row align-center">
             <div className="container flex-row justify-space-between-lg justify-center align-center">
-                <Link to="/">
-                    <h1>Maker</h1>
+                <Link to="/" className="">
+                    <h1 className="">Maker</h1>
                 </Link>
                 
                 <nav className="text-center">
                     {Auth.loggedIn() ? (
-                        <div>
+                        <div className="">
                             <Link to="/profile">Me</Link>
                             <Button onClick={logout}>Logout</Button>
                         </div>
                     ) : (
-                        <>
+                        <Button.Group>
                             <Login />
+                            <Button.Or />
                             <Signup />
-                        </>
+                        </Button.Group>
                     )}
                 </nav>
             </div>
