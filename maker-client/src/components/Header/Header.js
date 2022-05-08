@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import  Login  from '../Login/Login'
+import Signup from '../Signup/Signup';
+import { Button } from 'semantic-ui-react';
 
 import Auth from '../../utils/auth'
 
@@ -18,14 +21,14 @@ const Header = () => {
                 
                 <nav className="text-center">
                     {Auth.loggedIn() ? (
-                        <>
+                        <div>
                             <Link to="/profile">Me</Link>
-                            <a href="/" onClick={logout}>Logout</a>
-                        </>
+                            <Button onClick={logout}>Logout</Button>
+                        </div>
                     ) : (
                         <>
-                            <Link to="/login">Login</Link>
-                            <Link to="/signup">Sign Up</Link>
+                            <Login />
+                            <Signup />
                         </>
                     )}
                 </nav>

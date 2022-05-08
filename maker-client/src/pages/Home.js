@@ -16,25 +16,18 @@ const Home = () => {
     return (
         <main className="flex-row">
             <div className="col col-md-9 justify-space-between">
-                <div className="">
+                <div className="mb-5">
                     <h2>New</h2>
                     {loading ? (
                         <div>Loading...</div>
                     ) : (
                         <Rerousel responsive='true'>
                             {posts && 
-                            posts.map(post => (
-                                <Link key={post._id} to={`/post/${post._id}`}>
-                                    <div key={post._id} className="ui samll fade reveal image">                                   
-                                        <Image className="visible content" src="https://my-maker-bucket.s3.amazonaws.com/Paint_your_Petjpg.jpeg" alt={post.title}/>
-                                        <div className="hidden content">
-                                            <h4>{post.title}</h4>
-                                            <h6>Posted by: {post.username}</h6>
-                                            <p>{post.description}</p>
-                                        </div>      
-                                    </div>
-                                </Link>
-                            ))}
+                                posts.map(post => (
+                                    <Link key={post._id} to={`/post/${post._id}`}>                              
+                                            <Image size="small" className="mx-1" src="https://my-maker-bucket.s3.amazonaws.com/Paint_your_Petjpg.jpeg" alt="dog"/>
+                                    </Link>
+                                ))}
                         </Rerousel>    
                     )}
                 </div>
@@ -43,21 +36,7 @@ const Home = () => {
                     {loading ? (
                         <div>Loading...</div>
                     ) : (
-                        <Rerousel responsive='true'>
-                            {posts && 
-                            posts.map(post => (
-                                <Link key={post._id} to={`/post/${post._id}`}>
-                                    <div key={post._id} className="ui small fade reveal image">                                   
-                                        <Image className="visible content" src="https://my-maker-bucket.s3.amazonaws.com/Paint_your_Petjpg.jpeg" alt={post.title}/>
-                                        <div className="hidden content">
-                                            <h4>{post.title}</h4>
-                                            <h6>Posted by: {post.username}</h6>
-                                            <p>{post.description}</p>
-                                        </div>      
-                                    </div>
-                                </Link>
-                            ))}
-                        </Rerousel>    
+                        <div></div>  
                     )}
                 </div>
                 <div className="">
@@ -65,21 +44,7 @@ const Home = () => {
                     {loading ? (
                         <div>Loading...</div>
                     ) : (
-                        <Rerousel responsive='true'>
-                            {posts && 
-                            posts.map(post => (
-                                // <Link key={post._id} to={`/post/${post._id}`}>
-                                    <div key={post._id} className="ui small fade reveal image">                                   
-                                        <Image className="visible content" src="https://my-maker-bucket.s3.amazonaws.com/Paint_your_Petjpg.jpeg" alt={post.title}/>
-                                        <div className="hidden content">
-                                            <h4>{post.title}</h4>
-                                            <h6>Posted by: {post.username}</h6>
-                                            <p>{post.description}</p>
-                                        </div>      
-                                    </div>
-                                /* </Link> */
-                            ))}
-                        </Rerousel>    
+                        <div></div>  
                     )}
                 </div>
                 <div className="">
@@ -87,21 +52,7 @@ const Home = () => {
                     {loading ? (
                         <div>Loading...</div>
                     ) : (
-                        <Rerousel responsive='true'>
-                            {posts && 
-                            posts.map(post => (
-                                <Link key={post._id} to={`/post/${post._id}`}>
-                                    <div key={post._id} className="ui small fade reveal image">                                   
-                                        <Image className="visible content" src="https://my-maker-bucket.s3.amazonaws.com/Paint_your_Petjpg.jpeg" alt={post.title}/>
-                                        <div className="hidden content">
-                                            <h4>{post.title}</h4>
-                                            <h6>Posted by: {post.username}</h6>
-                                            <p>{post.description}</p>
-                                        </div>      
-                                    </div>
-                                </Link>
-                            ))}
-                        </Rerousel>    
+                        <div></div> 
                     )}
                 </div>
             </div>

@@ -12,10 +12,6 @@ code {
     monospace;
 }
 
-.carousel {
-  height: 20vh;
-  justify-items: center;
-}
 
 :root {
   --primary: #497573;
