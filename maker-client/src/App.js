@@ -10,12 +10,14 @@ import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import SinglePost from './pages/SinglePost';
 import NoMatch from './pages/NoMatch';
+import Faves from './pages/Faves';
+import Saves from './pages/Saves';
 // import apollo provider
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
-  uri: 'graphql'
+  uri: '/graphql'
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -45,6 +47,8 @@ function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile/:username?" component={Profile} />
+              <Route exact path="/faves" component={Faves} />
+              <Route exact path="/saves" component={Saves} />
               <Route exact path="/post/:id" component={SinglePost} />
 
               <Route component={NoMatch} />

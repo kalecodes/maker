@@ -8,6 +8,7 @@ export const QUERY_ME = gql`
             email
             image
             isArtist
+            createdAt
             posts {
                 _id
                 title

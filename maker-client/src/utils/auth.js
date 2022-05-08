@@ -2,7 +2,7 @@ import decode from 'jwt-decode';
 
 class AuthService {
     getProfile() {
-        return decode(this.getToken);
+        return decode(this.getToken());
     }
 
     loggedIn() {
@@ -37,7 +37,7 @@ class AuthService {
         // clear user token and profile data from localStorage
         localStorage.removeItem('id_token');
         // reload the page and reset the state of the application
-        window.location('/');
+        window.location.assign('/');
     }
 }
 
