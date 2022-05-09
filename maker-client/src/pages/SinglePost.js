@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_POST } from '../utils/queries';
 
@@ -24,8 +24,11 @@ const SinglePost = () => {
         <div>
             <Segment padded="very" className="">
                 <Image size="large" src={post.image} centered/>
-                <Header size="large">{post.title}</Header>
-                <Header size="small">Posted by: {` ` + post.username}</Header>
+                <Header size="huge">{post.title}</Header>
+                <Header size="medium">Posted by: {` ` + post.username}</Header>
+                <Link to={`/profile/${post.username}`}>
+                    <Button content="View Artist Profile" labelPosition='left' icon='edit' secondary/>
+                </Link>
                 <p>{post.description}</p>
                 {post.forSale && (
                     <>

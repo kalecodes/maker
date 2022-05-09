@@ -24,7 +24,7 @@ const FaveList = ({ faves }) => {
                             {fav.posts.length + ` `} Posts
                         </Card.Content>
                         <Link
-                            to={`/profile/${fav._id}`}
+                            to={`/profile/${fav.username}`}
                         >
                             <Button primary floated="right">
                                 See User
