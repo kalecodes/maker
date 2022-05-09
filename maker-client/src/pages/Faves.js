@@ -10,8 +10,6 @@ const Faves = () => {
     const { loading, data } = useQuery(QUERY_ME);
     const faves = data?.me.favorites || {};
 
-    console.log(faves);
-
     const loggedIn = Auth.loggedIn();
 
     return (

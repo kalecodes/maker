@@ -11,16 +11,16 @@ const SaveList = ({ saves }) => {
                     <Card key={save._id}>
                         <Image src={save.image} wrapped ui={false} />
                         <Card.Content>
-                            <Card.Header>{save.username}</Card.Header>
+                            <Card.Header>{save.title}</Card.Header>
                             <Card.Meta>
                                 <span className="date">Joined {save.createdAt}</span>
                             </Card.Meta>
                             <Card.Description>
-                                {save.bio}
+                                {save.description}
                             </Card.Description>
                         </Card.Content>
                         <Card.Content extra>
-                            <Icon name="image" />
+                            <Icon name="comment" />
                             {save.comments.length + ` `} Comments
                         </Card.Content>
                         <Link

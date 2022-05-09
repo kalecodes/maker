@@ -10,8 +10,6 @@ const Saves = () => {
     const { loading, data } = useQuery(QUERY_ME);
     const saves = data?.me.saves || {};
 
-    console.log(saves);
-
     const loggedIn = Auth.loggedIn();
 
     return (
