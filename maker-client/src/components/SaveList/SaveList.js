@@ -3,31 +3,31 @@ import { Link } from 'react-router-dom';
 import { Card, Icon, Image, Button } from 'semantic-ui-react'
 
 
-const FaveList = ({ faves }) => {
+const SaveList = ({ saves }) => {
     return (
         <main>
-            {faves &&
-                faves.map(fav => (
-                    <Card key={fav._id}>
-                        <Image src={fav.image} wrapped ui={false} />
+            {saves &&
+                saves.map(save => (
+                    <Card key={save._id}>
+                        <Image src={save.image} wrapped ui={false} />
                         <Card.Content>
-                            <Card.Header>{fav.username}</Card.Header>
+                            <Card.Header>{save.username}</Card.Header>
                             <Card.Meta>
-                                <span className="date">Joined {fav.createdAt}</span>
+                                <span className="date">Joined {save.createdAt}</span>
                             </Card.Meta>
                             <Card.Description>
-                                {fav.bio}
+                                {save.bio}
                             </Card.Description>
                         </Card.Content>
                         <Card.Content extra>
                             <Icon name="image" />
-                            {fav.posts.length + ` `} Posts
+                            {save.comments.length + ` `} Comments
                         </Card.Content>
                         <Link
-                            to={`/profile/${fav._id}`}
+                            to={`/post/${save._id}`}
                         >
                             <Button primary floated="right">
-                                See User
+                                See Post
                             </Button>
                         </Link>
                     </Card>
@@ -36,4 +36,4 @@ const FaveList = ({ faves }) => {
     )
 }
 
-export default FaveList;
+export default SaveList;

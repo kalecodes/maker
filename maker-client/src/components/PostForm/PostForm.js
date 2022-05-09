@@ -12,7 +12,7 @@ const options =[
 const defaultPostData = {
     title: '',
     description: '',
-    forSale: false,
+    forSale: 0,
     price: 0
 }
 
@@ -52,9 +52,12 @@ const PostForm = () => {
         e.preventDefault();
         
         try {
-            await addPost({
+            const { data } = await addPost({
                 variables: { image: postFileURL, title: postData.title, description: postData.description, forSale: postData.forSale, price: postData.price }
             });
+            // console.log(postData)
+            // console.log(postFileURL)
+            // console.log(data)
             setPostData(defaultPostData);
             setPostFileURL('');
             setModalState({ type: 'CLOSE_MODAL' })
@@ -78,7 +81,7 @@ const PostForm = () => {
                 onClose = {() => setModalState({ type: 'CLOSE_MODAL' })}
             >
             <Segment padded="very">
-            <Modal.Header>Add a New Post</Modal.Header>
+            <Modal.Header as="h1" content="Add a New Post"/>
             <Form onSubmit={handleFormSubmit}>
                 <Form.Group inline widths='equal'>
                     <Form.Input fluid name="title" label='Title' placeholder="Summerscape" value={postData?.title} onChange={handleChange}/>

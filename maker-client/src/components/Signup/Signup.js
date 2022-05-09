@@ -16,7 +16,7 @@ const defaultUserData = {
     email: '',
     password: '',
     bio: '',
-    isArtist: false
+    isArtist: 0
 }
 
 function modalReducer(state, action) {
@@ -64,7 +64,9 @@ const Signup = () => {
             const { data } = await addUser({
                 variables: { username: userData.username, email: userData.email, password: userData.password, image: userFileURL, bio: userData.bio, isArtist: userData.isArtist }
             });
-
+            console.log(userData)
+            console.log(userFileURL)
+            console.log(data)
             Auth.login(data.addUser.token);
 
             setUserData(defaultUserData);
