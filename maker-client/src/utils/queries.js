@@ -7,6 +7,7 @@ export const QUERY_ME = gql`
             username
             email
             image
+            bio
             isArtist
             createdAt
             posts {
@@ -67,6 +68,7 @@ export const QUERY_USERS = gql`
             _id
             username
             image
+            bio
             isArtist
             posts {
                 _id
@@ -89,6 +91,7 @@ export const QUERY_USER = gql`
             username
             email
             image
+            bio
             isArtist
             posts {
                 _id

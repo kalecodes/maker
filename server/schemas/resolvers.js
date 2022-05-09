@@ -8,7 +8,7 @@ const resolvers = {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id })
                     .select('-__v -password')
-                    .populate('posts')
+                    .populate({path: 'posts', options: {sort: { 'createdAt': -1 } } })
                     .populate('favorites')
                     .populate('likes')
                     .populate('saves');

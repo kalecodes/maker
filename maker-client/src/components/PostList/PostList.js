@@ -13,7 +13,7 @@ const PostList = ({ posts }) => {
             {posts &&
                 posts.map(post => (
                     <Item key={post._id}>
-                        <Item.Image src="https://my-maker-bucket.s3.amazonaws.com/Paint_your_Petjpg.jpeg" />
+                        <Item.Image src={post.image} />
                         <Item.Content>
                             <Item.Header>{post.title}</Item.Header>
                             <Item.Description>{post.description}</Item.Description>

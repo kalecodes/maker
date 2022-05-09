@@ -73,9 +73,9 @@ const Profile = (props) => {
                     </div>
                 </div>
                 {userParam && (
-                    <button className="" onClick={handleClick}>
+                    <Button className="" onClick={handleClick}>
                         Add To Favorites
-                    </button>
+                    </Button>
                 )}
             </div>
             {!userParam &&

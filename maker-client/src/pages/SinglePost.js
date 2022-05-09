@@ -23,7 +23,7 @@ const SinglePost = () => {
     return (
         <div>
             <Segment padded="very" className="">
-                <Image size="large" src="https://my-maker-bucket.s3.amazonaws.com/Paint_your_Petjpg.jpeg" centered/>
+                <Image size="large" src={post.image} centered/>
                 <Header size="large">{post.title}</Header>
                 <Header size="small">Posted by: {` ` + post.username}</Header>
                 <p>{post.description}</p>

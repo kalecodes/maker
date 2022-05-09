@@ -16,8 +16,8 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-    mutation addUser($username: String!, $email: String!, $password: String!) {
-        addUser(username: $username, email: $email, password: $password) {
+    mutation addUser($username: String!, $email: String!, $password: String!, $image: String, $bio: String, $isArtist: Boolean) {
+        addUser(username: $username, email: $email, password: $password, image: $image, bio: $bio, isArtist: $isArtist) {
             token
             user {
                 _id
@@ -31,8 +31,8 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-    mutation addPost($image: String!) {
-        addPost(image: $image) {
+    mutation addPost($image: String!, $title: String, $description: String, $forSale: Boolean, $price: Float) {
+        addPost(image: $image, title: $title, description: $description, forSale: $forSale, price: $price) {
             _id
             title
             image
