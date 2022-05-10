@@ -4,10 +4,10 @@ import { ADD_POST } from '../../utils/mutations';
 import { Form, Button, Modal, Segment } from 'semantic-ui-react'
 import { getSignedRequest } from '../../utils/aws';
 
-const options =[
-    { key: 'y', text: 'Yes', value: true },
-    { key: 'n', text: 'No', value: false }
-]
+// const options =[
+//     { key: 'y', text: 'Yes', value: true },
+//     { key: 'n', text: 'No', value: false }
+// ]
 
 const defaultPostData = {
     title: '',
@@ -118,18 +118,18 @@ const PostForm = () => {
                     Character Count: {characterCount}/280
                     {error && <span className="ml-2">Something went wrong...</span>}
                 </p> */}
-                <Form.Group inline widths='equal'>
+                {/* <Form.Group inline widths='equal'>
                     <Form.Select 
                         name='forSale'
                         fluid
                         label="For Sale"
                         options={options}
-                        value={options.value}
+                        // value={options.value}
                         placeholder='Do you wish to post this as "for sale"?'
-                        onSelect={handleChange}
+                        onChange={handleChange}
                     />
                     <Form.Input fluid name='price' value={postData?.price} label="Price" placeholder="Only fill this in if you have selected 'For Sale' as 'Yes'. Please enter a whole number" onChange={handleChange}/>
-                </Form.Group>
+                </Form.Group> */}
                 <Form.Button type="submit" content='Submit'/>
             </Form> 
             </Segment>

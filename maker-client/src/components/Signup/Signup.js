@@ -6,10 +6,10 @@ import { Button, Modal, Form, Segment } from 'semantic-ui-react';
 
 import Auth from '../../utils/auth';
 
-const options = [
-    { key: 'y', text: 'Yes', value: 1 },
-    { key: 'n', text: 'No', value: 0 }
-]
+// const options = [
+//     { key: 'y', text: 'Yes', value: 1 },
+//     { key: 'n', text: 'No', value: 0 }
+// ]
 
 const defaultUserData = {
     username: '',
@@ -38,7 +38,6 @@ const Signup = () => {
         open: false, 
         dimmer: undefined
     })
-
     
 
     useEffect(() => {
@@ -78,6 +77,10 @@ const Signup = () => {
     const handleChange = (e) => {
         setUserData((prevState) => ({ ...prevState, [e.target.name]: e.target.value }))
     };
+
+    // const handleRadio = (e, { value }) => {
+    //     this.setUserData((prevState) => ({ ...prevState, [e.target.name]: e.target.value}))
+    // };
 
     return (
         <div>
@@ -136,14 +139,33 @@ const Signup = () => {
                             placeholder="Tell us a little about yourself..."
                             onChange={handleChange}
                         />
-                        <Form.Select 
+                        {/* <Form.Select 
                             name='isArtist'
                             label="Are you an Artist?"
                             value={userData?.isArtist}
                             options={options}
                             placeholder='Artists can post and sell their work'
                             onChange={handleChange}
-                        />
+                        /> */}
+                        {/* <Form.Group inline>
+                            <label>Are you an Artist?</label>
+                            <Form.Field
+                                name="isArtist"
+                                control={Radio}
+                                label="Yes"
+                                value='true'
+                                checked={userData?.isArtist === true}
+                                onChange={handleRadio}
+                            />
+                            <Form.Field
+                                name="isArtist"
+                                control={Radio}
+                                label="No"
+                                value='false'
+                                checked={userData?.isArtist === false}
+                                onChange={handleRadio}
+                            />
+                        </Form.Group> */}
                         <Button type='submit' content="Submit"/>
                     </Form>
                 </Segment>
