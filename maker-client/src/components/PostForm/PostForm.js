@@ -5,14 +5,14 @@ import { Form, Button, Modal, Segment } from 'semantic-ui-react'
 import { getSignedRequest } from '../../utils/aws';
 
 const options =[
-    { key: 'y', text: 'Yes', value: 1 },
-    { key: 'n', text: 'No', value: 0 }
+    { key: 'y', text: 'Yes', value: true },
+    { key: 'n', text: 'No', value: false }
 ]
 
 const defaultPostData = {
     title: '',
     description: '',
-    forSale: 0,
+    forSale: false,
     price: 0
 }
 
@@ -50,14 +50,13 @@ const PostForm = () => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        
+        alert(postData.forSale)
         try {
+
             const { data } = await addPost({
-                variables: { image: postFileURL, title: postData.title, description: postData.description, forSale: postData.forSale, price: postData.price }
+                variables: { image: postFileURL, title: postData.title, description: postData.description, forSale: postData.forSale, price: parseInt(postData.price) }
             });
-            // console.log(postData)
-            // console.log(postFileURL)
-            // console.log(data)
+           
             setPostData(defaultPostData);
             setPostFileURL('');
             setModalState({ type: 'CLOSE_MODAL' })
@@ -70,6 +69,7 @@ const PostForm = () => {
     const handleChange = (e) => {
         setPostData((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
     }
+
 
     return (
         <div className='mt-5'>
@@ -94,6 +94,7 @@ const PostForm = () => {
                     <Form.Input
                         fluid
                         required
+                        label="Image"
                         id='image-upload'
                         size='small'
                         name='image'
@@ -122,12 +123,12 @@ const PostForm = () => {
                         name='forSale'
                         fluid
                         label="For Sale"
-                        value={postData?.forSale}
                         options={options}
+                        value={options.value}
                         placeholder='Do you wish to post this as "for sale"?'
-                        onChange={handleChange}
+                        onSelect={handleChange}
                     />
-                    <Form.Input fluid name='price' value={postData?.price} label="Price" placeholder="Only fill this in if you have selected 'For Sale' as 'Yes'" onChange={handleChange}/>
+                    <Form.Input fluid name='price' value={postData?.price} label="Price" placeholder="Only fill this in if you have selected 'For Sale' as 'Yes'. Please enter a whole number" onChange={handleChange}/>
                 </Form.Group>
                 <Form.Button type="submit" content='Submit'/>
             </Form> 

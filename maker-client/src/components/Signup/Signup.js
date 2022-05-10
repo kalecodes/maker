@@ -16,7 +16,7 @@ const defaultUserData = {
     email: '',
     password: '',
     bio: '',
-    isArtist: 0
+    isArtist: false
 }
 
 function modalReducer(state, action) {
@@ -56,13 +56,10 @@ const Signup = () => {
     // submit form 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-
-        console.log(userData)
-        console.log(userFileURL)
         
         try {
             const { data } = await addUser({
-                variables: { username: userData.username, email: userData.email, password: userData.password, image: userFileURL, bio: userData.bio, isArtist: userData.isArtist }
+                variables: { username: userData.username, email: userData.email, password: userData.password, bio: userData.bio, isArtist: userData.isArtist, image: userFileURL }
             });
             console.log(userData)
             console.log(userFileURL)
@@ -122,6 +119,7 @@ const Signup = () => {
                             onChange={handleChange}
                         />
                         <Form.Input
+                            fluid
                             id="image-upload"
                             name="image"
                             type="file"

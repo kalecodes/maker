@@ -27,7 +27,8 @@ const postSchema = new Schema(
         },
         price: {
             type: Number,
-            match: [/^[0-9]*\.[0-9]{2}$/, 'Must include 2 decimal places!'],
+            // match: [/^[0-9]*\.[0-9]{2}$/, 'Must include 2 decimal places!'],
+            match: [/^[\d]*$/, 'Must not contain decimals'],
             default: 0
         },
         sold: {

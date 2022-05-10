@@ -56,15 +56,15 @@ const Profile = (props) => {
                 <div className="ui items">
                     <div className="ui item">
                         <div className="ui small image">
-                            <img className="" src="https://cdn.pixabay.com/photo/2016/03/31/19/58/avatar-1295430__340.png" alt="me"/>
+                            <img className="" src={user.image} alt="me"/>
                         </div>
                         <div className="content">
                             <h1 className="m-1">{user.username}</h1>
                             <div className="meta">
                                 <p>User since: {user.createdAt}</p>
                             </div>
-                            <div className="description">
-                                <p>Example bio hardcoded into this element</p>
+                            <div className="bio">
+                                <p>{user.bio}</p>
                             </div>
                             <div className="extra">
                                 Posts: {user.posts.length}

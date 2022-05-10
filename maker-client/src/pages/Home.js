@@ -47,7 +47,7 @@ const Home = () => {
                 <div className="flex-row p-2">    
                     <div className="card p-2">
                         <div className="content">
-                            <img className="right floated mini ui image" src="https://cdn.pixabay.com/photo/2016/03/31/19/58/avatar-1295430__340.png" alt="my profile"/>
+                            <img className="right floated mini ui image" src={userData.me.image} alt="my profile"/>
                             <div className="header">
                                 {userData.me.username}
                             </div>

@@ -37,7 +37,8 @@ const resolvers = {
             return Post.find(params).sort({ createdAt: -1 });
         },
         post: async (parent, { _id }) => {
-            return Post.findOne({ _id });
+            return Post.findOne({ _id })
+            .populate({path: 'comments', options: {sort: { 'createdAt': -1 } } });
         },
     },
     Mutation: {
