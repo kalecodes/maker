@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Rerousel } from 'rerousel';
 import Auth from '../utils/auth';
@@ -11,12 +11,40 @@ const Home = () => {
     const posts = data?.posts || [];
     const { data: userData } = useQuery(QUERY_ME);
     
+    let newPosts = [{}] 
+    let forSalePosts = [{}]
+    let soldPosts = [{}]
+
+
+    for (let i = 0; i < posts.length; i++) {
+        if (posts[i].forSale === false) {
+            newPosts.push(posts[i])
+        }
+    }
+
+    for (let i = 0; i < posts.length; i++) {
+        if (posts[i].forSale === true) {
+            forSalePosts.push(posts[i])
+        }
+    }
+
+    for (let i = 0; i < posts.length; i++) {
+        if (posts[i].sold === true) {
+            soldPosts.push(posts[i])
+        }
+    }
+
+
+
+
     const loggedIn = Auth.loggedIn();
 
+    const ref = useRef(null);
+
     return (
-        <main className="flex-row no-wrap">
+        <main className="container no-wrap">
             {loggedIn && userData ? (
-                <div className="col-md-4 p-2">    
+                <div className="flex-row p-2">    
                     <div className="card p-2">
                         <div className="content">
                             <img className="right floated mini ui image" src="https://cdn.pixabay.com/photo/2016/03/31/19/58/avatar-1295430__340.png" alt="my profile"/>
@@ -87,18 +115,20 @@ const Home = () => {
                     </div> */}
                 </div>
             ) : null}
-            <div className="col col-md-8 justify-space-between">
+            <div className="flex-row justify-space-between">
                 <div className="mb-5">
                     <h2>New</h2>
                     {loading ? (
                         <Segment loading/>
                     ) : (
-                        <Rerousel responsive='true'>
-                            {posts && 
-                                posts.map(post => (
-                                    <Link key={post._id} to={`/post/${post._id}`}>                              
-                                            <Image size="small" className="mx-1" src={post.image} alt={post.title}/>
-                                    </Link>
+                        <Rerousel itemRef={ref} stop="true">
+                            {newPosts && 
+                                newPosts.map(post => (
+                                    post.image ?
+                                        <Link key={post._id} to={`/post/${post._id}`} ref={ref}>                              
+                                                <Image size="medium" className="mx-2" src={post.image} alt={post.title}/>
+                                        </Link>
+                                    : null
                                 ))}
                         </Rerousel>    
                     )}
@@ -108,12 +138,14 @@ const Home = () => {
                     {loading ? (
                         <Segment loading/>
                     ) : (
-                        <Rerousel responsive='true'>
+                        <Rerousel itemRef={ref} stop="true">
                             {posts && 
                                 posts.map(post => (
-                                    <Link key={post._id} to={`/post/${post._id}`}>                              
-                                            <Image size="small" className="mx-1" src={post.image} alt={post.title}/>
-                                    </Link>
+                                    post.image ?
+                                        <Link key={post._id} to={`/post/${post._id}`} ref={ref}>                              
+                                                <Image size="medium" className="mx-2" src={post.image} alt={post.title}/>
+                                        </Link>
+                                    : null
                                 ))}
                         </Rerousel>  
                     )}
@@ -123,12 +155,14 @@ const Home = () => {
                     {loading ? (
                         <Segment loading/>
                     ) : (
-                        <Rerousel responsive='true'>
-                            {posts && 
-                                posts.map(post => (
-                                    <Link key={post._id} to={`/post/${post._id}`}>                              
-                                            <Image size="small" className="mx-1" src={post.image} alt={post.title}/>
-                                    </Link>
+                        <Rerousel itemRef={ref} stop="true">
+                            {forSalePosts && 
+                                forSalePosts.map(post => (
+                                    post.image ?
+                                        <Link key={post._id} to={`/post/${post._id}`} ref={ref}>                              
+                                                <Image size="medium" className="mx-2" src={post.image} alt={post.title}/>
+                                        </Link>
+                                    : null
                                 ))}
                         </Rerousel> 
                     )}
@@ -138,12 +172,14 @@ const Home = () => {
                     {loading ? (
                         <Segment loading/>
                     ) : (
-                        <Rerousel responsive='true'>
-                            {posts && 
-                                posts.map(post => (
-                                    <Link key={post._id} to={`/post/${post._id}`}>                              
-                                            <Image size="small" className="mx-1" src={post.image} alt={post.title}/>
-                                    </Link>
+                        <Rerousel itemRef={ref} stop="true">
+                            {soldPosts && 
+                                soldPosts.map(post => (
+                                    post.image ?
+                                        <Link key={post._id} to={`/post/${post._id}`} ref={ref}>                              
+                                                <Image size="medium" className="mx-2" src={post.image} alt={post.title}/>
+                                        </Link>
+                                    : null
                                 ))}
                         </Rerousel>
                     )}

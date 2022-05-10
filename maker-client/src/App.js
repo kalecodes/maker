@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import components
-import Header from './components/Header/Header';
+import AppHeader from './components/Header/appHeader';
 import Footer from './components/Footer/Footer';
 // import pages
 import Home from './pages/Home';
@@ -38,7 +38,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
+          <AppHeader />
           <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />

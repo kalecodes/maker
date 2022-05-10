@@ -17,19 +17,21 @@ const PostList = ({ posts }) => {
                         <Item.Content>
                             <Item.Header>{post.title}</Item.Header>
                             <Item.Description>{post.description}</Item.Description>
+                            <Label.Group>
+                                <Label inline>Likes: #</Label>
+                                <Label inline>Comments: #</Label>
+                            </Label.Group>
+                            <Item.Extra>
+                                <Link 
+                                    to={`/post/${post._id}`}
+                                >
+                                    <Button primary floated="right">
+                                        See Post
+                                        <Icon name="right chevron" />
+                                    </Button>
+                                </Link>
+                            </Item.Extra>
                         </Item.Content>
-                        <Item.Extra>
-                            <Label>Likes: #</Label>
-                            <Label>Comments: #</Label>
-                            <Link 
-                                to={`/post/${post._id}`}
-                            >
-                                <Button primary floated="right">
-                                    See Post
-                                    <Icon name="right chevron" />
-                                </Button>
-                            </Link>
-                        </Item.Extra>
                     </Item>
                 )
             )}

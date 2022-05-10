@@ -122,6 +122,13 @@ nav a:hover {
   font-size: 2.5rem;
 }
 
+.footer {
+  border-top: solid 1px lightgrey;
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+}
+
 .btn,
 .pill {
   font-size: 1.3rem;
