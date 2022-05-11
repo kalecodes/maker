@@ -27,6 +27,7 @@ const typeDefs = gql`
         sold: Boolean
         createdAt: String
         likes: [User]
+        commentCount: Int
         comments: [Comment]
         saves: [User]
     }

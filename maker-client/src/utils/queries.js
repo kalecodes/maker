@@ -19,6 +19,7 @@ export const QUERY_ME = gql`
                 price
                 sold
                 createdAt
+                commentCount
             }
             favorites {
                 _id
@@ -79,6 +80,7 @@ export const QUERY_USERS = gql`
                 price
                 sold
                 createdAt
+                commentCount
             }
         }
     }
@@ -102,6 +104,7 @@ export const QUERY_USER = gql`
                 price
                 sold
                 createdAt
+                commentCount
             }
         }
     }
@@ -119,6 +122,7 @@ export const QUERY_POSTS = gql`
             price
             sold
             createdAt
+            commentCount
         }
     }
 `;
@@ -135,6 +139,7 @@ export const QUERY_POST = gql`
             price
             sold
             createdAt
+            commentCount
             comments {
                 _id
                 commentBody

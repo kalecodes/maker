@@ -19,7 +19,7 @@ const PostList = ({ posts }) => {
                             <Item.Description>{post.description}</Item.Description>
                             <Label.Group>
                                 <Label inline>Likes: #</Label>
-                                <Label inline>Comments: #</Label>
+                                <Label inline>Comments: {post.commentCount}</Label>
                             </Label.Group>
                             <Item.Extra>
                                 <Link 

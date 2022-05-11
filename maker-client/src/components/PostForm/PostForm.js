@@ -50,7 +50,6 @@ const PostForm = () => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        alert(postData.forSale)
         try {
 
             const { data } = await addPost({
