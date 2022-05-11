@@ -11,7 +11,8 @@ const Home = () => {
     const { loading, data} = useQuery(QUERY_POSTS);
     const posts = data?.posts || [];
     const { data: userData } = useQuery(QUERY_ME);
-    
+    const user = userData?.me || {};
+
     let newPosts = [{}] 
     let forSalePosts = [{}]
     let soldPosts = [{}]
@@ -48,19 +49,19 @@ const Home = () => {
                 <div className="flex-row p-2">    
                     <div className="card p-2">
                         <div className="content">
-                            {userData.me.image ? (
-                                <img className="right floated mini ui image" src={userData.me.image} alt="my profile"/>
+                            {user.image ? (
+                                <img className="right floated mini ui image" src={user.image} alt="my profile"/>
                             ) : (
                                 <img className="right floated mini ui image" src={avatar} alt="default profile"/>
                             )}
                             <div className="header">
-                                {userData.me.username}
+                                {user.username}
                             </div>
                             <div className="meta">
-                                {`User since ` + userData.me.createdAt}
+                                {`User since ` + user.createdAt}
                             </div>
                             <div className="description">
-                                Posts: {userData.me.posts.length} Faves: {userData.me.favorites.length} Saves: {userData.me.saves.length}
+                                Posts: {user.posts.length} Faves: {user.favorites.length} Saves: {user.saves.length}
                             </div>
                         </div>
                         <div className="extra content">
@@ -83,14 +84,14 @@ const Home = () => {
                         </div>
                     </div>
                     {/* <div className="">
-                        {userData.me.favorites.length === 0 ? (
+                        {user.favorites.length === 0 ? (
                             null
                         ) : (
                             <>
                             <h1>My Fav Artists</h1>
                             <div className="ui cards">
-                                {userData.me.favorites && 
-                                    userData.me.favorites.map(fav => (
+                                {user.favorites && 
+                                    user.favorites.map(fav => (
                                         <div key={fav._id} className="card">
                                             <div class="content">
                                                 <img class="right floated mini ui image" src={fav.image} alt={fav.username}/>
