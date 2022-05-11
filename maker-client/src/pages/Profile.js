@@ -1,11 +1,10 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { Button, Divider } from 'semantic-ui-react';
-
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { ADD_FAV } from '../utils/mutations';
-
+import avatar from '../images/avatar.png';
 import Auth from '../utils/auth';
 import PostForm from '../components/PostForm/PostForm';
 import PostList from '../components/PostList/PostList'
@@ -56,7 +55,11 @@ const Profile = (props) => {
                 <div className="ui items">
                     <div className="ui item">
                         <div className="ui small image">
-                            <img className="" src={user.image} alt="me"/>
+                            {user.image ? (
+                                <img className="" src={user.image} alt="me"/>
+                            ) : ( 
+                                <img alt="profile placeholder" src={avatar}/>
+                            )}   
                         </div>
                         <div className="content">
                             <h1 className="m-1">{user.username}</h1>
@@ -80,8 +83,8 @@ const Profile = (props) => {
             </div>
             {!userParam &&
                 <div className="">
-                        <PostForm />
-                    </div>
+                    <PostForm />
+                </div>
             }
             <Divider hidden/>
             <div className="">

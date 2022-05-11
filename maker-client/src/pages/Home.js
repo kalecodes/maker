@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Rerousel } from 'rerousel';
 import Auth from '../utils/auth';
+import avatar from '../images/avatar.png'
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS, QUERY_ME } from '../utils/queries';
 import { Image, Segment, Button } from 'semantic-ui-react';
@@ -47,7 +48,11 @@ const Home = () => {
                 <div className="flex-row p-2">    
                     <div className="card p-2">
                         <div className="content">
-                            <img className="right floated mini ui image" src={userData.me.image} alt="my profile"/>
+                            {userData.me.image ? (
+                                <img className="right floated mini ui image" src={userData.me.image} alt="my profile"/>
+                            ) : (
+                                <img className="right floated mini ui image" src={avatar} alt="default profile"/>
+                            )}
                             <div className="header">
                                 {userData.me.username}
                             </div>
