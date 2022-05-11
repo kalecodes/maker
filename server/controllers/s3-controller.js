@@ -3,7 +3,7 @@ const aws = require('aws-sdk');
 const AWS_REGION = process.env.AWS_REGION;
 const S3_BUCKET = process.env.S3_BUCKET;
 
-const folder = 'upload-images'; // hard coded here, but can be dynamic
+const folder = 'maker-images'; // hard coded here, but can be dynamic
 
 aws.config.region = AWS_REGION;
 
