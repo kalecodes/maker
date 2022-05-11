@@ -8,15 +8,15 @@ import { QUERY_POSTS, QUERY_ME } from '../utils/queries';
 import { Image, Segment, Button } from 'semantic-ui-react';
 
 const Home = () => {
-    const { loading, data} = useQuery(QUERY_POSTS);
-    const posts = data?.posts || [];
+    const { loading, data: postData} = useQuery(QUERY_POSTS);
+    const posts = postData?.posts || [];
     const { data: userData } = useQuery(QUERY_ME);
     const user = userData?.me || {};
 
-    let newPosts = [{}] 
-    let popularPosts = [{}]
-    let forSalePosts = [{}]
-    let soldPosts = [{}]
+    const newPosts = [{}] 
+    const popularPosts = [{}]
+    const forSalePosts = [{}]
+    const soldPosts = [{}]
 
 
     for (let i = 0; i < posts.length; i++) {
