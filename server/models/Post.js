@@ -65,7 +65,7 @@ const postSchema = new Schema(
 
 // get like count
 postSchema.virtual('likeCount').get(function() {
-    return this.likedBy.length;
+    return this.likes.length;
 })
 
 // get comment count

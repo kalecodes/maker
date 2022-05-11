@@ -14,6 +14,7 @@ const Home = () => {
     const user = userData?.me || {};
 
     let newPosts = [{}] 
+    let popularPosts = [{}]
     let forSalePosts = [{}]
     let soldPosts = [{}]
 
@@ -21,6 +22,12 @@ const Home = () => {
     for (let i = 0; i < posts.length; i++) {
         if (posts[i].forSale === false) {
             newPosts.push(posts[i])
+        }
+    }
+
+    for (let i = 0; i < posts.length; i++) {
+        if (posts[i].commentCount >= 2) {
+            popularPosts.push(posts[i])
         }
     }
 
@@ -128,14 +135,13 @@ const Home = () => {
                         <Segment loading/>
                     ) : (
                         <Rerousel itemRef={ref} stop="true">
-                            {newPosts && 
-                                newPosts.map(post => (
-                                    post.image ?
-                                        <Link key={post._id} to={`/post/${post._id}`} ref={ref}>                              
-                                                <Image size="medium" className="mx-2" src={post.image} alt={post.title}/>
-                                        </Link>
-                                    : null
-                                ))}
+                            {newPosts.map(post => (
+                                post.image ?
+                                    <Link key={post._id} to={`/post/${post._id}`} ref={ref}>                              
+                                            <Image size="medium" className="mx-2" src={post.image} alt={post.title}/>
+                                    </Link>
+                                : null
+                            ))}
                         </Rerousel>    
                     )}
                 </div>
@@ -145,14 +151,13 @@ const Home = () => {
                         <Segment loading/>
                     ) : (
                         <Rerousel itemRef={ref} stop="true">
-                            {posts && 
-                                posts.map(post => (
-                                    post.image ?
-                                        <Link key={post._id} to={`/post/${post._id}`} ref={ref}>                              
-                                                <Image size="medium" className="mx-2" src={post.image} alt={post.title}/>
-                                        </Link>
-                                    : null
-                                ))}
+                            {popularPosts.map(post => (
+                                post.image ?
+                                    <Link key={post._id} to={`/post/${post._id}`} ref={ref}>                              
+                                            <Image size="medium" className="mx-2" src={post.image} alt={post.title}/>
+                                    </Link>
+                                : null
+                            ))}
                         </Rerousel>  
                     )}
                 </div>
@@ -162,14 +167,13 @@ const Home = () => {
                         <Segment loading/>
                     ) : (
                         <Rerousel itemRef={ref} stop="true">
-                            {forSalePosts && 
-                                forSalePosts.map(post => (
-                                    post.image ?
-                                        <Link key={post._id} to={`/post/${post._id}`} ref={ref}>                              
-                                                <Image size="medium" className="mx-2" src={post.image} alt={post.title}/>
-                                        </Link>
-                                    : null
-                                ))}
+                            {forSalePosts.map(post => (
+                                post.image ?
+                                    <Link key={post._id} to={`/post/${post._id}`} ref={ref}>                              
+                                            <Image size="medium" className="mx-2" src={post.image} alt={post.title}/>
+                                    </Link>
+                                : null
+                            ))}
                         </Rerousel> 
                     )}
                 </div>
@@ -179,14 +183,13 @@ const Home = () => {
                         <Segment loading/>
                     ) : (
                         <Rerousel itemRef={ref} stop="true">
-                            {soldPosts && 
-                                soldPosts.map(post => (
-                                    post.image ?
-                                        <Link key={post._id} to={`/post/${post._id}`} ref={ref}>                              
-                                                <Image size="medium" className="mx-2" src={post.image} alt={post.title}/>
-                                        </Link>
-                                    : null
-                                ))}
+                            {soldPosts.map(post => (
+                                post.image ?
+                                    <Link key={post._id} to={`/post/${post._id}`} ref={ref}>                              
+                                            <Image size="medium" className="mx-2" src={post.image} alt={post.title}/>
+                                    </Link>
+                                : null
+                            ))}
                         </Rerousel>
                     )}
                 </div>
