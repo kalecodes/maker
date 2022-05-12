@@ -49,4 +49,4 @@ No testing required
 
 ## Additional Info
 * Github: [kalecodes](https://github.com/kalecodes)
-* Heroku Deployment: [Big Book Energy](https://kw-maker.herokuapp.com/)
+* Heroku Deployment: [Maker](https://kw-maker.herokuapp.com/)
