@@ -5,8 +5,6 @@ const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
 
-
-
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -16,22 +14,13 @@ require('dotenv').config();
 const routes = require('./routes');
 app.use(routes);
 
-// start apollo server
-const startServer = async () => {
-    const server = new ApolloServer({
-        typeDefs,
-        resolvers,
-        context: authMiddleware
-    });
+// create new Apollo Server and pass in middleware
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: authMiddleware
+});
 
-    await server.start();
-
-    server.applyMiddleware({ app });
-
-    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-};
-
-startServer();
 
 // aws code ------------------------- //
 // app.get('sign-s3', (req, res) => {
@@ -75,8 +64,18 @@ app.get('*', (req,res) => {
     res.sendFile(path.join(__dirname, '../maker-client/build/index.html'));
 })
 
-db.once('open', () => {
-    app.listen(PORT, () => {
-        console.log(`API server running on port ${PORT}!`);
+const startApolloServer = async (typeDefs, resolvers) => {
+    await server.start();
+    // integrate apollo server with express application as middleware
+    server.applyMiddleware({ app });
+
+    db.once('open', () => {
+        app.listen(PORT, () => {
+            console.log(`API server running on port ${PORT}!`);
+            console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+        });
     });
-});
+};
+
+startApolloServer(typeDefs, resolvers);
+
