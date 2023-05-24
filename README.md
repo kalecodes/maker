@@ -16,7 +16,7 @@ A social-media and ecommerce application for artists and art enthusiests, built 
 * [Questions](#questions)
 
 ## Usage
-This application is deployed to Heroku and ready to use. 
+This application's deployment is depracated and no longer usable. To view the application, please clone the repository to your device and run "npm install", then "npm run develop" in your terminal.'
 View posts and artists. 
 Create an account to make posts, add comments, save posts, and favorite artists. 
 
@@ -49,4 +49,3 @@ No testing required
 
 ## Additional Info
 * Github: [kalecodes](https://github.com/kalecodes)
-* Heroku Deployment: [Maker](https://kw-maker.herokuapp.com/)
